@@ -7,12 +7,14 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:padding="@dimen/fab_margin"
         android:id="@+id/layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/margrinTop_five">
+        >
 
         <ImageView
+            android:contentDescription="@string/app_name"
             android:id="@+id/iv_poster"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,17 +67,18 @@
             android:numStars="@dimen/num_of_stars"
             android:rating="4.1"
             android:stepSize="0.1"
-            android:layout_toLeftOf="@id/num_of_votes"
+            android:layout_toStartOf="@id/num_of_votes"
             android:layout_below="@id/tv_movie_title"/>
         <TextView
             android:id="@+id/rating_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/padding_left_or_right"
+            android:paddingStart="@dimen/padding_left_or_right"
+            android:paddingEnd="@dimen/padding_left_or_right"
             android:text="@string/placeHolder_text_rating"
             android:textColor="@android:color/black"
             android:layout_below="@id/tv_movie_title"
-            android:layout_toLeftOf="@id/rating_bar"/>
+            android:layout_toStartOf="@id/rating_bar"/>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
