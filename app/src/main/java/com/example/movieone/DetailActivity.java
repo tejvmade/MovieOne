@@ -3,12 +3,9 @@ package com.example.movieone;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -16,6 +13,7 @@ import android.widget.TextView;
 import com.example.movieone.utils.NetworkUtils;
 import com.squareup.picasso.Picasso;
 
+@SuppressWarnings("deprecation")
 public class DetailActivity extends AppCompatActivity {
 
     String MOVIE_TITLE = "title";
@@ -25,11 +23,6 @@ public class DetailActivity extends AppCompatActivity {
     String MOVIE_VOTE_AVERAGE = "vote_average";
     String MOVIE_VOTE_COUNT = "vote_count";
     String MOVIE_BACK_DROP = "backdrop_path";
-
-    private TextView titleTextView, releaseDateTextView,ratingTextView,voteCountTextView,overviewTextView,voteAverageTextView;
-    private ImageView posterImageView, backDropImageView;
-    private RatingBar ratingBar;
-    private CollapsingToolbarLayout collapsingToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +38,19 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = this.getIntent();
 
-        titleTextView = (TextView) findViewById(R.id.title_details);
-        releaseDateTextView = (TextView) findViewById(R.id.year_details);
-        ratingTextView = (TextView) findViewById(R.id.rating_score_detail);
-        voteAverageTextView = (TextView) findViewById(R.id.average_vote);
-        overviewTextView = (TextView) findViewById(R.id.plot_synopsis);
-        voteCountTextView = (TextView) findViewById(R.id.num_of_votes_detail);
-        ratingBar = (RatingBar) findViewById(R.id.rating_bar_detail);
-        posterImageView = (ImageView) findViewById(R.id.iv_movie_poster_details);
-        backDropImageView = (ImageView) findViewById(R.id.iv_backdrop);
-        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
+        TextView titleTextView = (TextView) findViewById(R.id.title_details);
+        TextView releaseDateTextView = (TextView) findViewById(R.id.year_details);
+        TextView ratingTextView = (TextView) findViewById(R.id.rating_score_detail);
+        TextView voteAverageTextView = (TextView) findViewById(R.id.average_vote);
+        TextView overviewTextView = (TextView) findViewById(R.id.plot_synopsis);
+        TextView voteCountTextView = (TextView) findViewById(R.id.num_of_votes_detail);
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.rating_bar_detail);
+        ImageView posterImageView = (ImageView) findViewById(R.id.iv_movie_poster_details);
+        ImageView backDropImageView = (ImageView) findViewById(R.id.iv_backdrop);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
 
         if (intent != null && intent.hasExtra(MOVIE_TITLE)){
+            assert actionBar != null;
             actionBar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" +
                     intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
             collapsingToolbar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" +

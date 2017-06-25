@@ -27,6 +27,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar.setTitle("Popular Movies");
         setSupportActionBar(toolbar);
 
-        movie_list = new ArrayList<MovieList>();
+        movie_list = new ArrayList<>();
         MoviesResponse moviesResponse = new MoviesResponse();
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_main);
@@ -200,14 +201,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //if setting will be later added this will implement it
                 return true;
             case R.id.action_sort_popular:
-                if (sortType != SORT_POPULAR) {
+                if (!Objects.equals(sortType, SORT_POPULAR)) {
                     sortType = SORT_POPULAR;
                     fetchMovies(sortType, currentPageNo);
                 }
                 return true;
             case R.id.action_sort_top_rated:
                 String SORT_RATED = "movie/top_rated";
-                if (sortType != SORT_RATED) {
+                if (!Objects.equals(sortType, SORT_RATED)) {
                     sortType = SORT_RATED;
                     fetchMovies(sortType, currentPageNo);
                 }
@@ -219,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public boolean isNetworkAvailable() {
-        boolean status = false;
+        boolean status;
         try {
             ConnectivityManager cm =
                     (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
