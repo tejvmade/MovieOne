@@ -19,6 +19,7 @@
         android:paddingRight="@dimen/margrinTop_five">
 
         <ImageView
+            android:contentDescription="@string/app_name"
             android:id="@+id/iv_movie_poster_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +29,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_below="@id/iv_movie_poster_details"
             android:orientation="vertical">
             <TextView
@@ -47,7 +48,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
             android:layout_below="@id/iv_movie_poster_details">
             <TextView
                 android:id="@+id/rating_score_detail"
@@ -126,7 +127,8 @@
                         android:id="@+id/average_vote"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/padding_left_or_right"
+                        android:paddingStart="@dimen/padding_left_or_right"
+                        android:paddingEnd="@dimen/padding_left_or_right"
                         android:layout_marginBottom="@dimen/margrinTop_five"
                         android:textSize="@dimen/text_size_detail" />
 
