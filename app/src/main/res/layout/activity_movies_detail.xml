@@ -27,6 +27,7 @@
             android:fitsSystemWindows="true">
 
             <ImageView
+                android:contentDescription="@string/app_name"
                 android:id="@+id/iv_backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
