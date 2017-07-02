@@ -55,7 +55,6 @@ public class DetailActivity extends AppCompatActivity {
 
         if (intent != null && intent.hasExtra(MOVIE_TITLE)){
             actionBar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" + intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
-            actionBar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" + intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
             collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.darker_gray));
             collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
             collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
