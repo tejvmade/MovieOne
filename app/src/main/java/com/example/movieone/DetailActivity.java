@@ -1,5 +1,6 @@
 package com.example.movieone;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -15,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 @SuppressWarnings("deprecation")
 public class DetailActivity extends AppCompatActivity {
+
+    public CollapsingToolbarLayout collapsingToolbar;
 
     String MOVIE_TITLE = "title";
     String MOVIE_OVERVIEW = "overview";
@@ -49,11 +52,12 @@ public class DetailActivity extends AppCompatActivity {
         ImageView backDropImageView = (ImageView) findViewById(R.id.iv_backdrop);
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
 
+
         if (intent != null && intent.hasExtra(MOVIE_TITLE)){
             assert actionBar != null;
             actionBar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" +
                     intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
-            collapsingToolbar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" +
+            actionBar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" +
                     intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
             collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.darker_gray));
             collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
