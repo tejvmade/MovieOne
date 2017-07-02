@@ -15,9 +15,8 @@ import com.example.movieone.utils.NetworkUtils;
 import com.squareup.picasso.Picasso;
 
 @SuppressWarnings("deprecation")
-public class DetailActivity extends AppCompatActivity {
 
-    public CollapsingToolbarLayout collapsingToolbar;
+public class DetailActivity extends AppCompatActivity {
 
     String MOVIE_TITLE = "title";
     String MOVIE_OVERVIEW = "overview";
@@ -54,6 +53,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
         if (intent != null && intent.hasExtra(MOVIE_TITLE)){
+            assert actionBar != null;
             actionBar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" + intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
             collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.darker_gray));
             collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
@@ -77,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
 
             double voteAverage = Double.parseDouble(intent.getStringExtra(MOVIE_VOTE_AVERAGE));
             voteAverage = (voteAverage/10)*5;
-            String rating = String.format("%.1f",voteAverage);
+            @SuppressLint("DefaultLocale") String rating = String.format("%.1f",voteAverage);
             voteAverage = Double.parseDouble(rating);
 
             ratingTextView.setText(rating);
