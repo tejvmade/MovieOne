@@ -26,6 +26,11 @@ public class DetailActivity extends AppCompatActivity {
     String MOVIE_VOTE_COUNT = "vote_count";
     String MOVIE_BACK_DROP = "backdrop_path";
 
+    private TextView titleTextView, releaseDateTextView,ratingTextView,voteCountTextView,overviewTextView,voteAverageTextView;
+    private ImageView posterImageView, backDropImageView;
+    private RatingBar ratingBar;
+    private CollapsingToolbarLayout collapsingToolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
