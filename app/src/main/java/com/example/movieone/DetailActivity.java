@@ -68,7 +68,7 @@ public class DetailActivity extends AppCompatActivity {
         collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
         collapsingToolbar.setStatusBarScrimColor(getResources().getColor(R.color.colorPrimaryDark));
 
-        if (intent.hasExtra("MOVIE_TITLE")) {
+        if (intent.hasExtra("title")) {
             setTitle(intent.getStringExtra(MOVIE_TITLE));
             titleTextView.setText(intent.getStringExtra(MOVIE_TITLE));
         }
