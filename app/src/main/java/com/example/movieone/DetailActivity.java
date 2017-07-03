@@ -26,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
     String MOVIE_VOTE_COUNT = "vote_count";
     String MOVIE_BACK_DROP = "backdrop_path";
 
-    private TextView titleTextView, releaseDateTextView,ratingTextView,voteCountTextView,overviewTextView,voteAverageTextView;
+    private TextView titleTextView, releaseDateTextView, ratingTextView, voteCountTextView, overviewTextView, voteAverageTextView;
     private ImageView posterImageView, backDropImageView;
     private RatingBar ratingBar;
     private CollapsingToolbarLayout collapsingToolbar;
@@ -40,7 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         final ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
@@ -55,46 +55,49 @@ public class DetailActivity extends AppCompatActivity {
         RatingBar ratingBar = (RatingBar) findViewById(R.id.rating_bar_detail);
         ImageView posterImageView = (ImageView) findViewById(R.id.iv_movie_poster_details);
         ImageView backDropImageView = (ImageView) findViewById(R.id.iv_backdrop);
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);}
 
 
+    private void populate() {
 
+        Intent intent = getIntent();
+        ActionBar actionBar;
 
-            if (actionBar != null) {
-                actionBar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" + intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
-                collapsingToolbar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" + intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
-            }
-            collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.darker_gray));
-            collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
-            collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
-            collapsingToolbar.setStatusBarScrimColor(getResources().getColor(R.color.colorPrimaryDark));
+        collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.darker_gray));
+        collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
+        collapsingToolbar.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
+        collapsingToolbar.setStatusBarScrimColor(getResources().getColor(R.color.colorPrimaryDark));
 
+        if (intent.hasExtra("MOVIE_TITLE")) {
+            setTitle(intent.getStringExtra(MOVIE_TITLE));
             titleTextView.setText(intent.getStringExtra(MOVIE_TITLE));
-            releaseDateTextView.setText(intent.getStringExtra(MOVIE_RELEASE));
-            voteCountTextView.setText("(" + String.valueOf(intent.getStringExtra(MOVIE_VOTE_COUNT)) + ")");
-            overviewTextView.setText(intent.getStringExtra(MOVIE_OVERVIEW));
-            voteAverageTextView.setText(intent.getStringExtra(MOVIE_VOTE_AVERAGE) + "/10");
-            String url1 = NetworkUtils.buildMovieUrl(intent.getStringExtra(MOVIE_POSTER)).toString();
-            Picasso.with(this)
-                    .load(url1)
-                    .into(posterImageView);
-
-            String url2 = NetworkUtils.buildMovieUrl(intent.getStringExtra(MOVIE_BACK_DROP)).toString();
-            Picasso.with(this)
-                    .load(url2)
-                    .into(backDropImageView);
-
-            double voteAverage = Double.parseDouble(intent.getStringExtra(MOVIE_VOTE_AVERAGE));
-            voteAverage = (voteAverage/10)*5;
-            @SuppressLint("DefaultLocale") String rating = String.format("%.1f",voteAverage);
-            voteAverage = Double.parseDouble(rating);
-
-            ratingTextView.setText(rating);
-            ratingBar.setRating((float)voteAverage);
-            ratingBar.setStepSize((float)0.1);
-
-
-
         }
+        releaseDateTextView.setText(intent.getStringExtra(MOVIE_RELEASE));
+        voteCountTextView.setText("(" + String.valueOf(intent.getStringExtra(MOVIE_VOTE_COUNT)) + ")");
+        overviewTextView.setText(intent.getStringExtra(MOVIE_OVERVIEW));
+        voteAverageTextView.setText(intent.getStringExtra(MOVIE_VOTE_AVERAGE) + "/10");
+        String url1 = NetworkUtils.buildMovieUrl(intent.getStringExtra(MOVIE_POSTER)).toString();
+        Picasso.with(this)
+                .load(url1)
+                .into(posterImageView);
+
+        String url2 = NetworkUtils.buildMovieUrl(intent.getStringExtra(MOVIE_BACK_DROP)).toString();
+        Picasso.with(this)
+                .load(url2)
+                .into(backDropImageView);
+
+        double voteAverage = Double.parseDouble(intent.getStringExtra(MOVIE_VOTE_AVERAGE));
+        voteAverage = (voteAverage / 10) * 5;
+        @SuppressLint("DefaultLocale") String rating = String.format("%.1f", voteAverage);
+        voteAverage = Double.parseDouble(rating);
+
+        ratingTextView.setText(rating);
+        ratingBar.setRating((float) voteAverage);
+        ratingBar.setStepSize((float) 0.1);
+
+
     }
+}
+
+
 
