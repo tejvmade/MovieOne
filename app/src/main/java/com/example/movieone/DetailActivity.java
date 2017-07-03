@@ -26,10 +26,6 @@ public class DetailActivity extends AppCompatActivity {
     String MOVIE_VOTE_COUNT = "vote_count";
     String MOVIE_BACK_DROP = "backdrop_path";
 
-    private TextView titleTextView, releaseDateTextView,ratingTextView,voteCountTextView,overviewTextView,voteAverageTextView;
-    private ImageView posterImageView, backDropImageView;
-    private RatingBar ratingBar;
-    private CollapsingToolbarLayout collapsingToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +53,11 @@ public class DetailActivity extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
 
 
-        if (intent != null && intent.hasExtra(MOVIE_TITLE)){
+
 
             if (actionBar != null) {
                 actionBar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" + intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
+                collapsingToolbar.setTitle(intent.getStringExtra(MOVIE_TITLE) + " (" + intent.getStringExtra(MOVIE_RELEASE).substring(0,4) + ")");
             }
             collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.darker_gray));
             collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(android.R.color.white));
@@ -95,4 +92,4 @@ public class DetailActivity extends AppCompatActivity {
 
         }
     }
-}
+
